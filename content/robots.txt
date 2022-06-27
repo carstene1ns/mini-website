@@ -1,0 +1,16 @@
+# robots.txt
+# carsten 06/2022
+
+# hide data folders
+User-agent: *
+Disallow: /css/
+Disallow: /img/
+Disallow: /fonts/
+Disallow: /js/
+
+# hide (php) queries
+User-agent: Googlebot
+Disallow: /*?
+
+# define xml sitemap
+Sitemap: https://carsten-teibes.de/sitemap.xml

@@ -1,0 +1,56 @@
+doctype 5
+html lang="de"
+  head
+    meta charset="utf-8"
+    title = "carsten-teibes.de" + (@item[:title] ? " - " + @item[:title] : "")
+    meta name="author" content="Carsten Teibes"
+    meta name="generator" content="Nanoc #{Nanoc::VERSION}"
+    meta name="description" content=""
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    /! link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"
+    /! link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"
+    link rel="shortcut icon" href="/favicon.ico"
+    link rel="stylesheet" href="/css/bulma.min.css"
+    link rel="stylesheet" href="/css/ionicons.min.css"
+    link rel="stylesheet" href="/css/site.css"
+  body
+
+    nav.navbar.is-info role="navigation" aria-label="main navigation"
+      .navbar-brand
+        a.navbar-item href="/"
+          img src="/img/ct-logo.png" alt="ct" width="32" height="32"
+        a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="leiste"
+          span aria-hidden="true"
+          span aria-hidden="true"
+          span aria-hidden="true"
+      #leiste.navbar-menu
+        .navbar-start
+          .navbar-item
+            .buttons
+              a.button disabled="disabled" href="/blog" Blog
+          .navbar-item
+            .buttons
+              a.button.is-primary href="https://f4ke.de" Spielewiese
+        .navbar-end
+          .navbar-item
+            .buttons
+              a.button href="https://github.com/carstene1ns"
+                span.icon
+                  i.ion-social-github
+                span Github
+          .navbar-item
+            .buttons
+              a.button.is-info href="/impressum" Impressum
+
+    section.section
+      .container
+        h1.title carsten-teibes.de
+        p.subtitle meine private Homepage
+        == yield
+
+    /! footer.footer
+    /!  .content.has-text-right - carsten1ns
+
+    script src="/js/cash.min.js"
+    script src="/js/menu.js"

@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+preprocess do
+  hide_items_from_sitemap
+end
+
+compile '/**/*.{html,md}' do
+  filter :erb
+  filter :kramdown, auto_ids: false if item.identifier =~ '/**/*.md'
+  layout '/default.*'
+
+  # homepage
+  if item.identifier =~ '/index.*'
+    write '/index.html'
+  # error page
+  elsif item.identifier =~ '/404.*'
+    write '/404.html'
+  # section home
+  elsif item.identifier =~ '**/index.*'
+    write item.identifier.without_ext + ".html"
+  # every other page
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
+compile '/**/*.scss' do
+  filter :sass, :syntax => :scss
+  write item.identifier.without_ext + '.css'
+end
+
+compile '/sitemap.xml' do
+  filter :erb
+  write item.identifier
+end
+
+compile '/google*' do
+  write item.identifier + '.html'
+end
+
+passthrough '/**/*'
+
+layout '/**/*.slim', :slim
+layout '/**/*.html', :erb

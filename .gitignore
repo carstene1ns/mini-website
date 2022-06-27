@@ -1,0 +1,8 @@
+/bin
+/output
+/tmp
+/vendor
+/.bundle
+
+crash.log
+output.diff
